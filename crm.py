@@ -10,12 +10,18 @@ class Student(Human):
         self.grade = grade
         self.address = address
 
+    def greet(self):
+        print(f"My name is {self.name} and I am at the {self.grade}th grade, I live at {self.address}")
+
 
 class Teacher(Human):
     def __init__(self, name, age, subject, experience):
         super().__init__(name, age)
         self.subject = subject
         self.experience = experience
+
+    def greet(self):
+        print(f"My name is {self.name} and I will teach {self.subject}, I have {self.experience} teaching experience")
 
 
 def reg_choice():
@@ -24,18 +30,9 @@ def reg_choice():
     choice = input("Register as a teacher or student?").lower()
     if choice == "teacher":
         teacher = Teacher(input("Teacher's name: "), int(input("Teacher's age: ")), input("subject: "), input("Work experience: "))
-        # print("Name:", teacher.name)
-        # print("Age:", teacher.age, 'years old')
-        # print("subject:", teacher.subject)
-        # print(teacher.experience, "years of teaching experience")
-        print(f"My name is {teacher.name} and I will teach {teacher.subject}, I have {teacher.experience} teaching experience")
-    #     can be done either way
+        teacher.greet()
     elif choice == "student":
         student = Student(input("Student's name: "), int(input("Student's age: ")), int(input("Student's grade: ")), input("Student's address: "))
-        print("Name:", student.name)
-        print(student.age, "years old")
-        print(f"currently at the {student.grade}'s grade")
-        print("Lives at:", student.address)
-        # print(f"My name is {student.name} and I am at the {student.grade}th grade, I live at {student.address}")
+        student.greet()
 
 reg_choice()
